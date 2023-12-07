@@ -22,7 +22,7 @@ def parse_phone(num):
         return num[:10]
 
 
-header = ['firstName', 'lastName', 'cell']
+header = ['firstname', 'lastname', 'cell']
 with open(fname, 'r') as infile, open(filename, 'w', newline='') as outfile:
     reader = csv.reader(infile)
     writer = csv.writer(outfile)
