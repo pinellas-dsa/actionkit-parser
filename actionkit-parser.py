@@ -29,14 +29,14 @@ with open(fname, 'r') as infile, open(filename, 'w', newline='') as outfile:
     next(reader)  # skip the header
     writer.writerow(header)  # add our header
     for row in reader:
-        if row[21] == 'TRUE':  # skip anyone who is p2ptext_optout
+        if row[5] == 'TRUE':  # skip anyone who is p2ptext_optout
             continue
-        first = row[1]
-        last = row[3]
-        if row[15]:  # if they filled in the mobile number field, use that
-            cell = row[15]
+        first = row[0]
+        last = row[2]
+        if row[7]:  # if they filled in the mobile number field, use that
+            cell = row[7]
         else:
-            cell = row[16]  # otherwise, use the generic "phone" field
+            cell = row[6]  # otherwise, use the "best_phone" field
         cell = parse_phone(cell)
         if cell:
             writer.writerow([first, last, cell])
